@@ -5,8 +5,8 @@ import type {
 } from '@/data/repositories/interfaces/ModuleRepository';
 
 export const moduleDataMock: ModuleModelData = {
-  id: '1234',
-  courseId: '1234',
+  id: crypto.randomUUID(),
+  courseId: crypto.randomUUID(),
   title: 'Programação Assíncrona',
   order: 0,
   isPublished: true,
