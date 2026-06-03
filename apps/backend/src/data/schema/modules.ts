@@ -16,7 +16,7 @@ export const modulesTable = pgTable(
     id: uuid().primaryKey().defaultRandom(),
     courseId: uuid('course_id')
       .notNull()
-      .references(() => coursesTable.id),
+      .references(() => coursesTable.id, { onDelete: 'cascade' }),
     title: varchar({ length: 255 }).notNull(),
     order: integer().default(0).notNull(),
     isPublished: boolean('is_published').default(false).notNull(),
