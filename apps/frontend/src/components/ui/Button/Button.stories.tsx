@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { Button } from '@/components/ui/Button';
 
 const meta = {
-  title: 'Button',
+  title: 'Components/UI/Button',
   component: Button,
   args: {
     children: 'Explorar Cursos',
@@ -27,6 +27,10 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
   args: { variant: 'secondary' },
+};
+
+export const Ghost: Story = {
+  args: { variant: 'ghost' },
 };
 
 export const WithIcon: Story = {

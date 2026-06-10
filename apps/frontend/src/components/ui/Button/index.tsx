@@ -9,6 +9,8 @@ export const buttonVariants = cva(
       variant: {
         primary: 'bg-gradient-primary shadow-sm hover:brightness-95',
         secondary: 'bg-background-300 hover:bg-background-200',
+        ghost:
+          'bg-transparent text-gray-200 hover:bg-background-300 hover:text-gray-50',
       },
     },
     defaultVariants: {
