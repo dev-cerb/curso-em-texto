@@ -14,7 +14,9 @@ export const AuthService = {
 
   signOut: () => {
     destroyCookie(null, TOKEN_COOKIE_KEY, { path: '/' });
-    window.dispatchEvent(new Event('auth-change'));
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('auth-change'));
+    }
   },
 
   getToken: () => {
