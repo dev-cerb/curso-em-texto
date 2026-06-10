@@ -14,6 +14,7 @@ export const AuthService = {
 
   signOut: () => {
     destroyCookie(null, TOKEN_COOKIE_KEY, { path: '/' });
+    window.dispatchEvent(new Event('auth-change'));
   },
 
   getToken: () => {
@@ -29,5 +30,6 @@ export const AuthService = {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
     });
+    window.dispatchEvent(new Event('auth-change'));
   },
 };

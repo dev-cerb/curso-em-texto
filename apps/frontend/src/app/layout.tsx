@@ -1,3 +1,4 @@
+import { Header } from '@/components/app/navigation/Header';
 import AuthProvider from '@/contexts/AuthContext';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
@@ -22,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.variable}  antialiased`}>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <Header />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
