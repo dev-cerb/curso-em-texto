@@ -3,7 +3,7 @@ export interface LessonModelData {
   courseId: string;
   moduleId: string;
   title: string;
-  content?: string | null;
+  content: string;
   order: number;
   isPublished: boolean;
   createdAt: Date;

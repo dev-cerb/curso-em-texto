@@ -23,7 +23,7 @@ export const lessonsTable = pgTable(
       .notNull()
       .references(() => modulesTable.id, { onDelete: 'cascade' }),
     title: varchar({ length: 255 }).notNull(),
-    content: text(),
+    content: text().notNull(),
     order: integer().default(0).notNull(),
     isPublished: boolean('is_published').default(false).notNull(),
     createdAt: timestamp('created_at').defaultNow().notNull(),
