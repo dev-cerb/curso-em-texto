@@ -1,12 +1,12 @@
 import { usePathname } from '@storybook/nextjs-vite/navigation.mock';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Header } from '@/components/app/navigation/Header';
 import { expect, userEvent, within } from 'storybook/test';
 import { AuthContext } from '@/contexts/AuthContext';
+import { Header } from '@/components/shared/Header';
 import { MouseEvent, useState } from 'react';
 
 const meta = {
-  title: 'Components/App/Navigation/Header',
+  title: 'Components/Shared/Header',
   component: Header,
   parameters: {
     layout: 'fullscreen',

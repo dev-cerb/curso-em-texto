@@ -1,12 +1,9 @@
 'use client';
 
-import { ReactNode, useEffect, useState, useSyncExternalStore } from 'react';
-import { BookOpen, Home, LogIn, LogOut, Menu, User, X } from 'lucide-react';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { useHeader } from '@/components/shared/Header/useHeader';
 import { Button, buttonVariants } from '@/components/ui/Button';
-import { useIsMobile } from '@/hooks/useIsMobile';
-import { useAuth } from '@/contexts/AuthContext';
-import { usePathname } from 'next/navigation';
+import { LogIn, LogOut, Menu, X } from 'lucide-react';
 import { cn } from '@/utils/cn';
 import Link from 'next/link';
 
@@ -27,63 +24,16 @@ export const navLinkVariants = cva(
 
 export type NavLinkVariants = VariantProps<typeof navLinkVariants>;
 
-interface HeaderNavLink {
-  label: string;
-  href: string;
-  icon: ReactNode;
-  requiresAuth?: boolean;
-}
-
-const navLinks: HeaderNavLink[] = [
-  { label: 'Início', href: '/', icon: <Home size={18} /> },
-  { label: 'Cursos', href: '/cursos', icon: <BookOpen size={18} /> },
-  {
-    label: 'Perfil',
-    href: '/perfil',
-    icon: <User size={18} />,
-    requiresAuth: true,
-  },
-];
-
 export const Header = () => {
-  const pathname = usePathname() ?? '/';
-  const isMobile = useIsMobile();
-  const [isOpen, setIsOpen] = useState(false);
-  const { isAuthenticated, logout } = useAuth();
-
-  const isLoggedIn = useSyncExternalStore(
-    (callback) => {
-      window.addEventListener('auth-change', callback);
-      return () => window.removeEventListener('auth-change', callback);
-    },
-    () => isAuthenticated(),
-    () => false
-  );
-
-  const visibleLinks = navLinks.filter(
-    (link) => !link.requiresAuth || isLoggedIn
-  );
-
-  const isActive = (href: string) =>
-    href === '/' ? pathname === '/' : pathname.startsWith(href);
-
-  const isDrawerOpen = isMobile && isOpen;
-
-  useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
+  const {
+    isLoggedIn,
+    isOpen,
+    setIsOpen,
+    isDrawerOpen,
+    visibleLinks,
+    isActive,
+    logout,
+  } = useHeader();
 
   const renderNavLinks = (onNavigate?: () => void) => (
     <>

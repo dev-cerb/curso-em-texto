@@ -1,4 +1,4 @@
-import { Header } from '@/components/app/navigation/Header';
+import { Header } from '@/components/shared/Header';
 import AuthProvider from '@/contexts/AuthContext';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';

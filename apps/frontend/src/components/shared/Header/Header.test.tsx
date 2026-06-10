@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
-import { Header } from '@/components/app/navigation/Header';
+import { Header } from '@/components/shared/Header';
 import { useAuth } from '@/contexts/AuthContext';
 import { usePathname } from 'next/navigation';
 import { vi } from 'vitest';
